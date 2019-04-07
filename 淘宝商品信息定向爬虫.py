@@ -14,6 +14,7 @@ def parsePage(ilt,html):
    try:
        plt=re.findall(r'\"view_price\"\:\"[\d\.]*\"',html)
        tlt=re.findall(r'\"view_title\"\:\".*?\"',html)
+
        for i in range(len(plt)):
            price=eval(plt[i].split(':')[1])
            title = eval(tlt[i].split(':')[1])
@@ -22,7 +23,7 @@ def parsePage(ilt,html):
        price("")
 
 def printGoodsList(ilt):
-   tplt="{:4}\t{:\8}\t{:16}"
+   tplt="{:4}\t{:8}\t{:16}"
    print(tplt.format("序号","价格","商品名称"))
    count=0
    for g in ilt:
@@ -31,8 +32,10 @@ def printGoodsList(ilt):
 
 def main():
     goods='书包'
+
     depth=2
     start_url= 'https://s.taobao.com/search?q=' +goods
+
     infoList=[]
     for i in range(depth):
         try:
